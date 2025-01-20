@@ -6,9 +6,9 @@ import java.util.List;
 public class ConcurrencyExample {
     public static void main(String[] args) {
 
-        // cpu 코어 수 
-        int cpuCores = Runtime.getRuntime().availableProcessors();
-//        int cpuCores = 13;
+        // cpu 코어 수
+//        int cpuCores = Runtime.getRuntime().availableProcessors() * 2;
+        int cpuCores = 17;
 
         // CPU 개수만큼 데이터를 생성
         List<Integer> data = new ArrayList<>();
@@ -18,7 +18,7 @@ public class ConcurrencyExample {
 
         // CPU 개수만큼 데이터를 각각의 스레드로 병렬 처리
         long startTime1 = System.currentTimeMillis();
-        long sum1 = data.stream()
+        long sum1 = data.parallelStream()
                 .mapToLong(i -> {
                     try {
                         Thread.sleep(500);
