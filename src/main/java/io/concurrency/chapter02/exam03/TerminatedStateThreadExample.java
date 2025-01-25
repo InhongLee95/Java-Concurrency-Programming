@@ -3,6 +3,8 @@ package io.concurrency.chapter02.exam03;
 public class TerminatedStateThreadExample {
 
     public static void main(String[] args) throws InterruptedException {
+        // 스레드 실행 상태 6번째 : TERMINATED
+
         Thread thread = new Thread(() -> {
             System.out.println("스레드 실행 중");
         });

@@ -3,6 +3,8 @@ package io.concurrency.chapter02.exam03;
 public class WaitingStateThreadExample {
 
     public static void main(String[] args) throws InterruptedException {
+
+        // 스레드 상태 3단계 : Waiting 상태
         final Object lock = new Object();
         Thread thread = new Thread(() -> {
             synchronized (lock) {

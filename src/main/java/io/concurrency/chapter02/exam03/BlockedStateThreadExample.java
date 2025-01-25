@@ -3,6 +3,8 @@ package io.concurrency.chapter02.exam03;
 public class BlockedStateThreadExample {
 
     public static void main(String[] args) throws InterruptedException {
+        // 스레드 상태 5번째 : block 상태
+
         final Object lock = new Object();
         Thread thread1 = new Thread(() -> {
             synchronized (lock) {
@@ -20,7 +22,8 @@ public class BlockedStateThreadExample {
         Thread.sleep(100); // thread1이 lock을 점유하도록 잠시 대기
         thread2.start();
         Thread.sleep(100); // thread2가 lock을 기다리는 상태로 대기
-        System.out.println("스레드 2 상태: " + thread2.getState()); // BLOCKED
+        System.out.println("스레드 1 상태: " + thread1.getState()); // RUNNABLE 상태
+        System.out.println("스레드 2 상태: " + thread2.getState()); // BLOCKED 상태
     }
 
 }
