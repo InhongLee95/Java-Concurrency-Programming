@@ -5,6 +5,8 @@ public class InterruptExample {
 
         Thread thread1 = new Thread(() -> {
             System.out.println("스레드 1 작업 시작...");
+
+            // 인터럽트 상태 true
             System.out.println("스레드 1 인터럽트 상태: " + Thread.currentThread().isInterrupted());
         });
 
@@ -14,10 +16,12 @@ public class InterruptExample {
             System.out.println("스레드 2 인터럽트 상태: " + Thread.currentThread().isInterrupted());
         });
 
+        // 스레드 2 실행 후, sleep 후 스레드 1 실행
         thread2.start();
         Thread.sleep(1000);
         thread1.start();
 
+        // 스레드1,2 완료될 때까지 메인 스레드 대기
         thread1.join();
         thread2.join();
 
