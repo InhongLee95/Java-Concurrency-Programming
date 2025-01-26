@@ -23,14 +23,19 @@ public class MultiThreadJoinExample {
             }
         });
 
+
+        // 자식 스레드 생성 및 실행
         thread1.start();
         thread2.start();
 
         System.out.println("메인 스레드가 다른 스레드의 완료를 기다립니다.");
 
+        // 자식 스레드 join 호출하면서 메인스레드는 작업 대기
+        // 자식 스레드 작업이 완료되어야 while문의 wait(0)가 동작하지 않는다.
         thread1.join();
         thread2.join();
 
+        // 자식 스레드 작업 완료 후 메인 스레드는 순차적 처리를 수행한다.
         System.out.println("메인 스레드가 계속 진행합니다");
 
     }
