@@ -4,7 +4,7 @@ public class ThreadAliveExample {
     public static void main(String[] args) {
         // 두 개의 작업 스레드 생성
         Thread task1 = new Thread(() -> {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 6; i++) {
                 System.out.println("작업 스레드 1 실행 중...");
                 try {
                     Thread.sleep(100); // 100ms 동안 일시 정지
@@ -15,7 +15,7 @@ public class ThreadAliveExample {
         });
 
         Thread task2 = new Thread(() -> {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 6; i++) {
                 System.out.println("작업 스레드 2 실행 중...");
                 try {
                     Thread.sleep(150); // 150ms 동안 일시 정지
@@ -30,6 +30,7 @@ public class ThreadAliveExample {
         task2.start();
 
         // 두 스레드가 모두 완료될 때까지 대기
+        // 두 스레드 false 상태가 되면 while문 빠져나온다.
         while (task1.isAlive() || task2.isAlive()) {
             System.out.println("작업 스레드 1 상태: " + task1.isAlive());
             System.out.println("작업 스레드 2 상태: " + task2.isAlive());
