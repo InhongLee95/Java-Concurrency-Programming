@@ -2,9 +2,12 @@ package io.concurrency.chapter04.exam02;
 
 public class IsInterruptedThreadStopExample {
     public static void main(String[] args) throws InterruptedException {
+
+
         Thread worker = new Thread(() -> {
+            // 인터럽트 false면 수행
             while (!Thread.currentThread().isInterrupted()) {
-                // 스레드의 작업을 수행합니다.
+                // 스레드의 작업을 수행
                 System.out.println("작업 스레드가 실행 중입니다.");
             }
             System.out.println("인트럽트 상태: " + Thread.currentThread().isInterrupted());
@@ -18,6 +21,7 @@ public class IsInterruptedThreadStopExample {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // worker 스레드 인터럽트 전송
             worker.interrupt();
             System.out.println("중단 스레드가 작업 스레드를 중단시켰습니다.");
         });

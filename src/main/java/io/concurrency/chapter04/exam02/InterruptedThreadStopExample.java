@@ -4,6 +4,8 @@ public class InterruptedThreadStopExample {
     public static void main(String[] args) {
 
         Thread worker = new Thread(() -> {
+
+            // interrupted가 상태 초기화 진행
             while (!Thread.interrupted()) {
                 // 스레드의 작업을 수행합니다.
                 System.out.println("작업 스레드가 실행 중입니다.");

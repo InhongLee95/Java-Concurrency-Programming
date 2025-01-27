@@ -4,6 +4,7 @@ public class InterruptedExceptionThreadStopExample {
     public static void main(String[] args) {
         Thread worker = new Thread(() -> {
             try {
+                // 인터럽트에 의해 작업 중단되어, catch문으로 예외처리하면서 진행된다.
                 while (true) {
                     // 스레드의 작업을 수행합니다.
                     System.out.println("작업 스레드가 실행 중입니다.");

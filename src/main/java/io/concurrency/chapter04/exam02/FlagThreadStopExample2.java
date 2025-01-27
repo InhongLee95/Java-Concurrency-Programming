@@ -3,8 +3,10 @@ package io.concurrency.chapter04.exam02;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FlagThreadStopExample2 {
+
+    //AtomicBoolean 타입 flag 변수
     private AtomicBoolean running = new AtomicBoolean(true);
-//    private boolean running = true;
+
 
     public void volatileTest() {
         new Thread(() -> {
