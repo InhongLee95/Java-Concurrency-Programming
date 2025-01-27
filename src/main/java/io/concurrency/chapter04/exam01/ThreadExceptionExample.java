@@ -3,7 +3,7 @@ package io.concurrency.chapter04.exam01;
 public class ThreadExceptionExample {
 
     public static void main(String[] args) {
-
+        // 해당 스레드에서 예외가 발생하면 catch문에서 잡을 수 가 없다.
         try {
             new Thread(() -> {
                 throw new RuntimeException("스레드 1 예외!");

@@ -4,9 +4,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UncaughtExceptionHandlerExample {
+
     private static final Logger LOGGER = Logger.getLogger(UncaughtExceptionHandlerExample.class.getName());
 
     public static void main(String[] args) {
+
         Thread thread = new Thread(() -> {
             System.out.println("스레드 시작!");
 
@@ -22,10 +24,11 @@ public class UncaughtExceptionHandlerExample {
             sendNotificationToAdmin(e);
         });
 
+        // 스레드0 실행
         thread.start();
     }
 
-    // 알림 서비스를 호출하는 메서드
+    // 알림 서비스를 호출하는 메서드, 예외 메시지 인자로 받아서 처리
     private static void sendNotificationToAdmin(Throwable e) {
         System.out.println("관리자에게 알림: " + e.getMessage());
     }
