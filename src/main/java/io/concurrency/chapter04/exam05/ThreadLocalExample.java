@@ -1,7 +1,7 @@
 package io.concurrency.chapter04.exam05;
 
 public class ThreadLocalExample {
-    // ThreadLocal 변수 생성. 초기값은 null
+    // ThreadLocal 변수 생성. 초기값은 null, Hello World으로 셋팅
     private static ThreadLocal<String> threadLocal = ThreadLocal.withInitial(() -> "Hello World");
 //    private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
@@ -21,6 +21,7 @@ public class ThreadLocalExample {
             System.out.println(Thread.currentThread().getName() + ": " + threadLocal.get());
         }, "Thread-2");
 
+        // 스레드 실행
         thread1.start();
         thread2.start();
     }

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ThreadLocalLogger {
 
+    // THREAD_LOG 값이 스레드 로컬의 값으로 매핑
     private static final ThreadLocal<List<String>> THREAD_LOG = ThreadLocal.withInitial(ArrayList::new);
 
     public static void addLog(String log) {
