@@ -15,10 +15,12 @@ public class    NestedThreadGroupExample {
         // 하위 스레드 그룹에 속한 스레드 생성
         Thread subGroupThread = new Thread(subGroup, new MyRunnable(), "SubGroupThread");
 
-        // 그룹 정보 출력
+        // 그룹 정보 출력한다.
         System.out.println(topGroupThread.getName() + " 는 " + topGroupThread.getThreadGroup().getName() + "에 속해 있습니다.");
         System.out.println(subGroupThread.getName() + " 는 " + subGroupThread.getThreadGroup().getName() + "에 속해 있습니다.");
 
+
+        //스레드 실행
         topGroupThread.start();
         subGroupThread.start();
 

@@ -3,13 +3,14 @@ package io.concurrency.chapter04.exam04;
 public class ThreadGroupExample {
 
     public static void main(String[] args) {
+
         // 메인 스레드 그룹 가져오기
         ThreadGroup mainGroup = Thread.currentThread().getThreadGroup();
 
         // 새로운 스레드 그룹 생성
         ThreadGroup customGroup = new ThreadGroup("Custom Thread Group");
 
-        // 기본 스레드 그룹에 속한 스레드 생성
+        // 디폴트 스레드 그룹에 속한 스레드 생성
         Thread defaultGroupThread = new Thread(new GroupRunnable(), "DefaultGroupThread");
 
         // 메인 스레드 그룹에 속한 스레드 생성
@@ -18,6 +19,7 @@ public class ThreadGroupExample {
         // 직접 생성한 스레드 그룹에 속한 스레드 생성
         Thread customGroupThread = new Thread(customGroup, new GroupRunnable(), "CustomGroupThread");
 
+        //스레드 실행
         defaultGroupThread.start();
         mainGroupThread.start();
         customGroupThread.start();
