@@ -6,6 +6,8 @@ public class CpuSyncExample {
 
     public static void main(String[] args) throws InterruptedException {
 
+        // 스레드 1 생성
+        // synchronized 이용하여 동기화 처리
         Thread thread1 = new Thread(() -> {
             for (int i = 0; i < ITERATIONS; i++) {
                 synchronized(CpuSyncExample.class) {
@@ -14,6 +16,7 @@ public class CpuSyncExample {
             }
         });
 
+        // 스레드 2 생성
         Thread thread2 = new Thread(() -> {
             for (int i = 0; i < ITERATIONS; i++) {
                 synchronized(CpuSyncExample.class) {
@@ -22,6 +25,7 @@ public class CpuSyncExample {
             }
         });
 
+        // 스레드 실행
         thread1.start();
         thread2.start();
 
