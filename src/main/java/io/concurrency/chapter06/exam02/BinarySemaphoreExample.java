@@ -7,6 +7,7 @@ public class BinarySemaphoreExample {
         CommonSemaphore semaphore = new BinarySemaphore();
         SharedResource resource = new SharedResource(semaphore);
 
+        // 스레드 생성 및 실행
         Thread t1 = new Thread(resource::sum);
         Thread t2 = new Thread(resource::sum);
 
@@ -33,10 +34,12 @@ class SharedResource {
     }
 
     public void sum() {
+        // 시그널 획득
         commonSemaphore.acquired();
         for(int i=0; i< 1000000; i++) {
             value++;
         }
+        // 시그널 해제
         commonSemaphore.release();
     }
     public int getSum() {
