@@ -10,6 +10,8 @@ public class NonRaceConditionExample {
         for (int i = 0; i < incrementThreads.length; i++) {
             incrementThreads[i] = new Thread(() -> {
                 for (int j = 0; j < 10000; j++) {
+                    // synchronized을 이용해 NonRaceConditionExample 객체 동기화 처리
+                    // Race Condition 해결 -> 여러 스레드가 임계 영역을 동시 접근 차단
                     synchronized(NonRaceConditionExample.class) {
                         sharedResource++; // 각 스레드가 공유 데이터에 동시에 접근할 수 없다
                     }

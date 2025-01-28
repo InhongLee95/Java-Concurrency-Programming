@@ -9,6 +9,7 @@ public class RaceConditionExample {
         Thread[] incrementThreads = new Thread[100];
         for (int i = 0; i < incrementThreads.length; i++) {
             incrementThreads[i] = new Thread(() -> {
+                // 해당 작업에서 Race Condition 문제 발생
                 for (int j = 0; j < 10000; j++) {
                     sharedResource++; // 각 스레드가 공유 데이터에 동시에 접근할 수 있고 CPU 할당을 받기 위해 경쟁하게 된다
                 }
