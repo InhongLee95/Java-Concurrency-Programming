@@ -24,6 +24,7 @@ public class FutureIsDoneExample {
         // 작업을 제출 하고 Future 객체를 받음
         Future<Integer> future = executorService.submit(callableTask);
 
+        // isDone에서 대기상태 전환
         while (!future.isDone()) {
             System.out.println("Waiting for the result...");
             Thread.sleep(500);

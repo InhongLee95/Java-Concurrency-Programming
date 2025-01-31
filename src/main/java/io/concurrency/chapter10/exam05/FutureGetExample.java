@@ -21,9 +21,12 @@ public class FutureGetExample {
             return 42;
         };
 
+        // executorService 작업 전달
         Future<Integer> future = executorService.submit(callableTask);
 
+        // 워커 스레드가 작업 수행
         try {
+            // 작업 결과 반환
             Integer result = future.get();
             System.out.println("Result: " + result);
 
