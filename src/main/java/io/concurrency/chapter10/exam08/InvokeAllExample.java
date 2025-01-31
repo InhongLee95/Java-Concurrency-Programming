@@ -7,9 +7,13 @@ import java.util.concurrent.*;
 public class InvokeAllExample {
     public static void main(String[] args) {
 
+        // 스레드 풀 생성
         ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        // 작업 List 생성
         List<Callable<Integer>> tasks = new ArrayList<>();
 
+        // 작업  추가
         tasks.add(() -> {
             Thread.sleep(3000);
             return 1;
@@ -25,6 +29,8 @@ public class InvokeAllExample {
         long started = 0;
         try {
             started = System.currentTimeMillis();
+
+            // invokeAll 호출
             List<Future<Integer>> results = executor.invokeAll(tasks);
             for (Future<Integer> future : results) {
                 try {
