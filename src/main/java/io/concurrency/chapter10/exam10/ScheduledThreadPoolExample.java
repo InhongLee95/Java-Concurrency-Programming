@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ScheduledThreadPoolExample {
     public static void main(String[] args) {
+
+        // 스케줄 스레드 풀 생성
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
         // 주기적으로 실행할 작업
