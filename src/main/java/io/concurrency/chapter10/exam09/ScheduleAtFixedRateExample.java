@@ -7,28 +7,32 @@ import java.util.concurrent.TimeUnit;
 
 public class ScheduleAtFixedRateExample {
     public static void main(String[] args) {
+
+        // 스레드 풀 생성
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);
+
+        // 작업 정의
         Runnable task = () -> {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2000);  // 작업이 2초 걸림
                 System.out.println("thread: " + Thread.currentThread().getName());
             } catch (InterruptedException e) {
-                // 예외 처리
+                e.printStackTrace();
             }
         };
 
-        // 처음 1 초가 지난 후 실행 되고 지정된 주기 마다 계속 실행 된다
-        // 스레드 풀이 3개의 스레드를 가지고 있으므로, 각 스레드가 1초 간격으로 번갈아가면서 작업을 실행한다. 이렇게 하면 스레드 간에 작업이 겹치지 않고 균등하게 분산된다
+        // 1초 후 실행, 1초마다 반복 실행
         ScheduledFuture<?> future = scheduler.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
 
-
+        // 메인 스레드를 충분히 대기시켜 작업이 실행될 시간을 확보
         try {
-            Thread.sleep(100000);
+            Thread.sleep(10000);  // 메인 스레드가 10초 동안 대기
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        future.cancel(true); // 작업을 취소하면 인터럽트 되어 스케줄링이 중지된다
+        // 작업 취소 및 스레드 풀 종료
+//        future.cancel(true);
         scheduler.shutdown();
     }
 }

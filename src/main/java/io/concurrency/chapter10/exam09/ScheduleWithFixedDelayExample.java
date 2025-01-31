@@ -7,11 +7,15 @@ import java.util.concurrent.TimeUnit;
 
 public class ScheduleWithFixedDelayExample {
     public static void main(String[] args) {
+
+        // 스레드 풀 생성
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);
 
+
+        // 작업 정의
         Runnable task = () -> {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 System.out.println("thread: " + Thread.currentThread().getName());
             } catch (InterruptedException e) {
                 // 예외 처리
@@ -22,9 +26,9 @@ public class ScheduleWithFixedDelayExample {
         ScheduledFuture<?> future = scheduler.scheduleWithFixedDelay(task, 1, 1, TimeUnit.SECONDS);
 
         try {
-            Thread.sleep(100000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("작업이 인터럽트로 중단되었습니다.");
         }
 
         future.cancel(true); // 작업을 취소하면 인터럽트 되어 스케줄링이 중지된다

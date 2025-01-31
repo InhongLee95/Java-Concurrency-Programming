@@ -7,8 +7,11 @@ import java.util.concurrent.TimeUnit;
 public class ScheduleRunnableExample {
     public static void main(String[] args) {
 
+        // 스레드 풀 생성
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+
+        // 작업 정의
         Runnable task = () -> {
             System.out.println("작업이 한번 실행 됩니다");
         };
