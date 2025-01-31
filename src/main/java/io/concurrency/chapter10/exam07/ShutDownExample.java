@@ -7,12 +7,14 @@ import java.util.concurrent.TimeUnit;
 public class ShutDownExample {
     public static void main(String[] args) {
 
+        // 스레드 생성
         ExecutorService executorService = Executors.newFixedThreadPool(2);
 
+        // 작업 제출
         for (int i = 0; i < 5; i++) {
             executorService.submit(()->{
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(1000);
                     System.out.println(Thread.currentThread().getName() + ": 작업 종료");
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -22,10 +24,12 @@ public class ShutDownExample {
             });
         }
 
+        // executorService 종료 / 해당 메서드는 대기 상태 전환이 안된다.
         executorService.shutdown();
 
         try {
-            if(!executorService.awaitTermination(1, TimeUnit.SECONDS)){
+            if(!executorService.awaitTermination(100, TimeUnit.SECONDS)){
+                // 종료가 안된 상황이라면 강제종료 shutdownNow 메서드 호출
                 executorService.shutdownNow();
                 System.out.println("스레드 풀 강제 종료 수행");
             }
@@ -42,9 +46,11 @@ public class ShutDownExample {
             System.out.println("스레드 풀 완전 종료 여부: " + executorService.isTerminated());
         }
 
+        // isTerminated false인 경우
         while(!executorService.isTerminated()){
             System.out.println("스레드 풀 종료 중..");
         }
+        // isTerminated 가 true가 되면 종료 완료된 상황을 출력
         System.out.println("모든 작업이 종료되고 스레드 풀이 종료됨");
     }
 }

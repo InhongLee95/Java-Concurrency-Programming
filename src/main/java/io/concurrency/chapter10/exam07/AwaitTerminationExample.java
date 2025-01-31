@@ -3,10 +3,12 @@ package io.concurrency.chapter10.exam07;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 public class AwaitTerminationExample {
     public static void main(String[] args) throws InterruptedException {
 
+        // 스레드 생성
         ExecutorService executorService = Executors.newFixedThreadPool(2, new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
@@ -16,6 +18,8 @@ public class AwaitTerminationExample {
             }
         });
 
+
+        // 작업 제출
         executorService.submit(()->{
             while(true){
                 System.out.println(Thread.currentThread().getName() + " : 데몬 스레드 실행 중...");
@@ -23,9 +27,10 @@ public class AwaitTerminationExample {
             }
         });
 
+        // executorService 종료 호출
         executorService.shutdown();
 
-//        executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         Thread.sleep(3000);
         System.out.println("메인 스레드 종료");
 
