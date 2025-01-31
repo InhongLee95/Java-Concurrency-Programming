@@ -5,11 +5,15 @@ import java.util.Queue;
 
 public class SimpleThreadPool {
 
+
+    // 스레드 풀 속성
     private final int numThreads; // 스레드 풀 내 스레드 수
     private final Queue<Runnable> taskQueue; // 작업 큐
     private final Thread[] threads; // 스레드 배열
     private volatile boolean isShutdown; // 종료 여부 플래그
 
+
+    // 스레드풀 초기화
     public SimpleThreadPool(int numThreads) {
         this.numThreads = numThreads;
         this.taskQueue = new LinkedList<>(); // 작업 큐 초기화
@@ -22,6 +26,7 @@ public class SimpleThreadPool {
         }
     }
 
+    // 해당 메서드를 통해 태스크를 작업 큐에 전달
     public void submit(Runnable task) {
         if (!isShutdown) {
             synchronized (taskQueue) {
@@ -31,6 +36,7 @@ public class SimpleThreadPool {
         }
     }
 
+    // 작업 완료 후 스레드 깨우고, 종료 시킨다.
     public void shutdown() {
         isShutdown = true; // 스레드 풀 종료 플래그 설정
         synchronized (taskQueue) {
@@ -46,6 +52,8 @@ public class SimpleThreadPool {
         }
     }
 
+
+    // 스레드는 태스크를 추출하여 작업 처리한다.
     private class WorkerThread extends Thread {
         public void run() {
             while (!isShutdown) {

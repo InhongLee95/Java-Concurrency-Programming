@@ -8,7 +8,9 @@ import java.util.concurrent.Executors;
 
 public class IOBoundExample {
     public static void main(String[] args) {
-        int numThreads = Runtime.getRuntime().availableProcessors() / 2;
+        // cpu 코어수 *2 만큼 스레드 생성
+        int numThreads = Runtime.getRuntime().availableProcessors() * 2;
+        System.out.println("Number of threads: " + numThreads);
         ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
 
         for (int i = 0; i < numThreads; i++) {

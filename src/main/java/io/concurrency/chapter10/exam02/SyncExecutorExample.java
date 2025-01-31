@@ -23,6 +23,7 @@ public class SyncExecutorExample {
 
         @Override
         public void execute(Runnable command) {
+            // run을 호출하여 메인 스레드가 동기적 처리하게 된다.
             command.run();
         }
     }

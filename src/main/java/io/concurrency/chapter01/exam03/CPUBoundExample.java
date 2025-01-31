@@ -11,8 +11,11 @@ public class CPUBoundExample {
     public static void main(String[] args) throws InterruptedException {
 
         int numThreads = Runtime.getRuntime().availableProcessors();
+        System.out.println("Number of threads: " + numThreads);
+        // 코어수 만큼 스레드 생성
         ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
 
+        // 시작 시간 체크
         long startTime2 = System.currentTimeMillis();
         List<Future<?>> futures = new ArrayList<>();
 
@@ -45,6 +48,8 @@ public class CPUBoundExample {
                 throw new RuntimeException(e);
             }
         });
+
+        // 작업 종료 시간
         long endTime2 = System.currentTimeMillis();
         System.out.println("CPU 개수를 초과하는 데이터를 병렬로 처리하는 데 걸린 시간: " + (endTime2 - startTime2) + "ms");
         executorService.shutdown();

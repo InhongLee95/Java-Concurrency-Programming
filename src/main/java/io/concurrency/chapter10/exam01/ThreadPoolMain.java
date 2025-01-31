@@ -6,7 +6,7 @@ public class ThreadPoolMain {
         // 스레드 풀 생성 (3개의 스레드를 가진 스레드 풀)
         SimpleThreadPool threadPool = new SimpleThreadPool(3);
 
-        // 작업을 스레드 풀에 제출
+        // 작업을 스레드 풀에 제출한다.
         for (int i = 1; i <= 10; i++) {
             final int taskId = i;
             threadPool.submit(() -> {

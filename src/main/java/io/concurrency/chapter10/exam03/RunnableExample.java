@@ -13,6 +13,7 @@ public class RunnableExample {
             System.out.println("Runnable 작업 완료");
         };
 
+        // executorService에게 수행해야 할 작업을 제출하고, 스레드 풀에서 작업을 실행한다
         executorService.execute(runnableTask);
 
         executorService.shutdown();
