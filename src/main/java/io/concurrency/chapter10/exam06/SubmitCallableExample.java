@@ -10,7 +10,7 @@ public class SubmitCallableExample {
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        // Callable 을 사용한 작업 실행 (submit 메서드)
+        // Callable 을 사용한 작업 실행 (submit 메서드), 작업을 스레드 풀에게 전달
         Future<Integer> future = executorService.submit(() -> {
             System.out.println("Callable 작업 실행");
             return 42;
@@ -23,7 +23,7 @@ public class SubmitCallableExample {
         // 스레드 풀 종료
         executorService.shutdown();
 
-        // 순수 스레드로 구현 하는 경우
+        // 순수 스레드로 구현 하는 방식
         Thread workerThread = new Thread(() -> {
             System.out.println("Runnable 작업 실행");
             try {
