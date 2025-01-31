@@ -16,7 +16,7 @@ public class AsyncExecutorExample {
         asyncExecutor.execute(()->{
             System.out.println("비동기 작업 2 수행 중...");
             // 작업 수행
-            System.out.println("비동기 작업 1 완료...");
+            System.out.println("비동기 작업 2 완료...");
         });
     }
 
@@ -24,6 +24,7 @@ public class AsyncExecutorExample {
 
         @Override
         public void execute(Runnable command) {
+            // 처리해야할 작업마다, 각 스레드를 별도로 생성하여 비동기적 실행하도록 구현
             Thread thread = new Thread(command);
             thread.start();
         }
