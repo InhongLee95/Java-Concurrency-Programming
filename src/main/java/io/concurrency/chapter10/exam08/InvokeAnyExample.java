@@ -44,7 +44,7 @@ public class InvokeAnyExample {
             executor.shutdown();
         }
 
-        // 태스크 2번 출력
+        // 태스크 1번 출력
         System.out.println("총 소요시간:"  + (System.currentTimeMillis() - started ));
     }
 }
