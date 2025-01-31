@@ -2,6 +2,8 @@ package io.concurrency.chapter04.exam05.logger;
 
 public class LogWorker implements Runnable {
 
+
+    // 스레드 실행 작업
     @Override
     public void run() {
 

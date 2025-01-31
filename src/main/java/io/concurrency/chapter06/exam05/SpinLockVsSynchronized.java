@@ -7,7 +7,11 @@ public class SpinLockVsSynchronized {
     private final Object syncLock = new Object();
     private int count = 0;
 
+
+    // 스레드 5개
     final static int THREAD_COUNT = 5;
+
+    // 계산 값
     final int ITERATIONS = 10_000_000;
 
     public void useSpinLock() {

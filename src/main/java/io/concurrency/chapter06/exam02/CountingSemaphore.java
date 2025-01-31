@@ -4,6 +4,7 @@ public class CountingSemaphore implements CommonSemaphore {
     private int signal;
     private int permits;
 
+    // 카운팅 세머 포어는 permits 속성이 추가적으로 필요하다.
     public CountingSemaphore(int permits) {
         this.permits = permits;
         this.signal = permits;
@@ -13,6 +14,7 @@ public class CountingSemaphore implements CommonSemaphore {
         synchronized (this) {
             while (this.signal == 0) {
                 try {
+                    // 시그널 개수가 0이되면 wait() 호출하여 스레드 대기 상태로 전환
                     wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -2,6 +2,9 @@ package io.concurrency.chapter05.exam04;
 
 public class ThreadSafeMemberReferenceObjectExample {
     public static void main(String[] args) throws InterruptedException {
+
+        // MyRunnable이 생성되어 run 메서드를 실행하고, changeName 메서드를 호출한다.
+
         new Thread(new MyRunnable(new Company("Company"))).start(); // 스레드에 안전함, 멤버변수를 공유하지 않음
         new Thread(new MyRunnable(new Company("Company"))).start(); // 스레드에 안전함, 멤버변수를 공유하지 않음
 

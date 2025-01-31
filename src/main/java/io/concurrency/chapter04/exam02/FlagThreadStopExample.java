@@ -1,11 +1,13 @@
 package io.concurrency.chapter04.exam02;
 
 public class FlagThreadStopExample {
-    // volatile 키워드 추가
+    // 플래그 변수, volatile 키워드 추가
    volatile boolean running = true;
 //    boolean running = true;
 
     public void volatileTest() {
+
+        //스레드 1
         new Thread(() -> {
             int count = 0;
             while (running) {
@@ -19,6 +21,7 @@ public class FlagThreadStopExample {
             System.out.println("Thread 1 종료. Count: " + count);
         }).start();
 
+        //스레드 2, flag 변수를 false로 설정
         new Thread(() -> {
             try {
                 Thread.sleep(100);

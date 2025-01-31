@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SpinLockExample {
     private AtomicBoolean lock = new AtomicBoolean(false);
 
+
+    // lock 메서드에 while을 통해서 스핀 락을 구현
     public void lock() {
         while (!lock.compareAndSet(false, true)) ;
     }
@@ -32,6 +34,7 @@ public class SpinLockExample {
             }
         };
 
+        // 스레드 생성 및 실행
         Thread thread1 = new Thread(task);
         Thread thread2 = new Thread(task);
 

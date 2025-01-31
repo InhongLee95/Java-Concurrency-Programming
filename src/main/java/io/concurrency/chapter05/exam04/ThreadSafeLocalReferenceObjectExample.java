@@ -14,9 +14,11 @@ public class ThreadSafeLocalReferenceObjectExample {
         }
     }
 
+    // 아래 객체를 이용하여 메서드를 처리하면 -> 동시성 문제 발생한다.
 //    LocalObject localObject = new LocalObject();
 
     public void useLocalObject() {
+        // 메서드 안에서 객체를 생성하여 사용하므로, 스레드 안정성을 갖게 된다.
         // 지역 객체 참조. 각 스레드는 이 객체의 독립된 인스턴스를 가짐.
         LocalObject localObject = new LocalObject();
 

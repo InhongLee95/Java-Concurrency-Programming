@@ -3,6 +3,7 @@ package io.concurrency.chapter04.exam04;
 public class ThreadGroupScopeExample {
     public static void main(String[] args) throws InterruptedException {
 
+        // 스레드 그룹 생성
         ThreadGroup topGroup = new ThreadGroup("상위그룹");
         ThreadGroup subGroup = new ThreadGroup(topGroup, "하위그룹");
 

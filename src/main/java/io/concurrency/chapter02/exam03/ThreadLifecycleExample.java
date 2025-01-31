@@ -3,7 +3,7 @@ package io.concurrency.chapter02.exam03;
 public class ThreadLifecycleExample {
 
     public static void main(String[] args) throws InterruptedException {
-
+        // 스레드 상태 모두 확인
         /**
          * NEW 상태의 스레드 생성
          */

@@ -3,6 +3,7 @@ package io.concurrency.chapter02.exam02;
 public class MultiThreadAppTerminatedExample {
     public static void main(String[] args) {
 
+        // 멀티 스레드로 작업 처리, 비동기적으로 처리된다.
         for (int i = 0; i < 3; i++) {
             Thread thread = new Thread(new ThreadStackExample.MyRunnable(i));
             thread.start();

@@ -7,6 +7,7 @@ public class ThreadLocalLoggerExample {
         Thread thread2 = new Thread(new LogWorker());
         Thread thread3 = new Thread(new LogWorker());
 
+        // 스레드 실행
         thread1.start();
         thread2.start();
         thread3.start();
