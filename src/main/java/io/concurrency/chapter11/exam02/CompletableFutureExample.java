@@ -7,6 +7,8 @@ public class CompletableFutureExample {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
+
+        // CompletableFuture 을 사용함으로 코드 간결성 및 특정 작업 코드 구현 생략이 가능하다.
         int finalResult = CompletableFuture.supplyAsync(() -> {
             System.out.println("Service 1 시작");
             // 비동기 서비스 1의 작업 수행

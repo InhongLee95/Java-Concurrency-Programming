@@ -9,6 +9,7 @@ public class RunAsyncExample {
 
         MyService2 service = new MyService2();
 
+        //runAsync 이용하여 비동기 처리, 반환값 없음. 작업이 끝나면 자동 종료
         CompletableFuture<Void> cf = CompletableFuture.runAsync(() -> {
             System.out.println(Thread.currentThread().getName() + " 가 비동기 작업을 시작합니다");
             service.getData().stream().forEach(System.out::println);

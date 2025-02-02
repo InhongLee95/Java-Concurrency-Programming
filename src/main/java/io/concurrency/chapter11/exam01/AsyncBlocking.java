@@ -6,11 +6,12 @@ public class AsyncBlocking {
 
     public static void main(String[] args) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-
+        // 작업 전달
         Callable<String> task = () -> {
             Thread.sleep(2000);
             return "Hello Java";
         };
+
         // 비동기 & 논블록킹
         Future<String> future = executor.submit(task);
 

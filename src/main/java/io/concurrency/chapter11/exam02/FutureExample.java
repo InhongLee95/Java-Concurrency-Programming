@@ -7,13 +7,14 @@ public class FutureExample {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
 
+        //Future 는 비동기 처리 방식이지만, 전 결과 값을 의존하는 상황에서는 동기처리가 된다.
         Future<Integer> future1 = executorService.submit(new Service1());
         Future<Integer> future2 = executorService.submit(new Service2(future1));
         Future<Integer> future3 = executorService.submit(new Service3(future2));
         Future<Integer> future4 = executorService.submit(new Service4(future3));
         Future<Integer> future5 = executorService.submit(new Service5(future4));
 
-        // 최종 결과를 얻기 위해 future5의 완료를 기다림
+        // 최종 결과를 얻기 위해 future5의 완료를 기다림 , 블로킹 상태
         int finalResult = future5.get();
 
         executorService.shutdown();
