@@ -8,6 +8,8 @@ public class ThenRunExample {
     public static void main(String[] args) {
 
         MyService myService = new MyService();
+
+        // supplyAsync 는 40을 리턴
         CompletableFuture<List<Integer>> asyncTask1 = CompletableFuture.supplyAsync(() -> {
                     System.out.println("thread1:" + Thread.currentThread().getName());
                     try {
@@ -23,6 +25,7 @@ public class ThenRunExample {
                 });
 
         // 비동기 작업 2: 로깅
+        // thenRun 을 통해서 후속작업을 처리한다.
         CompletableFuture<Void> asyncTask2 = asyncTask1.thenRun(() -> {
             System.out.println("thread: " + Thread.currentThread().getName());
             System.out.println("비동기 작업이 완료 되었습니다.");

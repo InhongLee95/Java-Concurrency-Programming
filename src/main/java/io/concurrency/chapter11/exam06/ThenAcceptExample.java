@@ -18,7 +18,7 @@ public class ThenAcceptExample {
                     }
                     return 40;
                 })
-                .thenAccept(result -> {
+                .thenAccept(result -> { // thenAccept는 이전의 작업 결과를 받아 값을 소비하는 메서드이다.
                     System.out.println("thread2:" + Thread.currentThread().getName());
                     System.out.println("결과: " + result);
                     List<Integer> r = myService.getData1();
@@ -30,7 +30,7 @@ public class ThenAcceptExample {
                     List<Integer> r = myService.getData2();
                     r.forEach(System.out::println);
 
-                }).join();
+                }).join(); // 메인스레드 대기 상태로 전환해줘야 한다.
     }
 
     static class MyService {
