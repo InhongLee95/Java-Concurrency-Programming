@@ -10,6 +10,7 @@ public class ThenCombineExample {
         CompletableFuture<String> cf1 = myService.getData1(); // 비동기 작업 1
         CompletableFuture<String>  cf2 = myService.getData2();
 
+        // thenCombine을 이용하여 각 비동기 작업 결과 값을 결합하여 처리한다.
         CompletableFuture<String> cf3 = cf1.thenCombine(cf2, (r1, r2) -> r1 + r2);
 
         CompletableFuture<String> cf4 = cf3.thenCompose(result -> CompletableFuture.supplyAsync(() -> result + " Java"));

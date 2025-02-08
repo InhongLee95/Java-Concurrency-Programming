@@ -11,7 +11,7 @@ public class ThenComposeExample {
 
         CompletableFuture<Integer> asyncTask1 = myService.getData1(5); // 비동기 작업 1
         CompletableFuture<Integer> asyncTask2 = asyncTask1.thenCompose(result -> {
-            // 이전 비동기 작업의 결과를 사용 하여 다른 비동기 작업 실행
+            // thenCompose을 이용하여 -> 이전 비동기 작업의 결과를 사용 하여 다른 비동기 작업 실행
             return myService.getData2(result);
         });
 
