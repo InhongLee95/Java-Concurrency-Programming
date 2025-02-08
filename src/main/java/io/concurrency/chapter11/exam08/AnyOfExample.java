@@ -9,11 +9,15 @@ public class AnyOfExample {
         ServiceB sb = new ServiceB();
         ServiceC sc = new ServiceC();
 
+
+        // 비동기 작업 실행
         CompletableFuture<Integer> cf1 = sa.getData1();
         CompletableFuture<Integer> cf2 = sb.getData2();
         CompletableFuture<Integer> cf3 = sc.getData3();
 
         long started = System.currentTimeMillis();
+
+        // anyOf 이용하여 가장 먼저 완료된 작업 기준으로 후속 작업 진행된다.
         CompletableFuture<Object> finalCf = CompletableFuture.anyOf(cf1, cf2, cf3);
         finalCf.thenApply(result -> {
             return (int)result * 10;

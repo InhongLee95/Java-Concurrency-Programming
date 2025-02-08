@@ -9,14 +9,19 @@ public class AllOfExample {
         ServiceB sb = new ServiceB();
         ServiceC sc = new ServiceC();
 
+        // 비동기 작업 수행
         CompletableFuture<Integer> cf1 = sa.getData1();
         CompletableFuture<Integer> cf2 = sb.getData2();
         CompletableFuture<Integer> cf3 = sc.getData3();
 
         long started = System.currentTimeMillis();
+
+        // allOf 이용하여 한번에 조합할 수 있는 환경을 보장
         CompletableFuture<Void> voidCf = CompletableFuture.allOf(cf1, cf2, cf3);
         CompletableFuture<Integer> finalCf = voidCf.thenApply(v -> {
 
+
+            // 작업 롼료될 때까지 대기 상태 전환
             int result1 = cf1.join();
             int result2 = cf2.join();
             int result3 = cf3.join();
