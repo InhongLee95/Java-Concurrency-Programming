@@ -7,6 +7,8 @@ public class ThenApplyExample {
 
         MyService myService = new MyService();
         long started = System.currentTimeMillis();
+
+        // 비동기 작업 처리
         CompletableFuture<Integer> asyncFuture = CompletableFuture.supplyAsync(() -> {
                                                     System.out.println("thread1:" + Thread.currentThread().getName());
                                                     try {
@@ -16,7 +18,7 @@ public class ThenApplyExample {
                                                     }
                                                     return 40;
                                                 })
-                                                .thenApply(result -> {
+                                                .thenApply(result -> { // thenApply 호출, 결과값 가공처리
                                                     System.out.println("thread2:" + Thread.currentThread().getName());
                                                     int r = myService.getData1();
                                                     return r + result;
