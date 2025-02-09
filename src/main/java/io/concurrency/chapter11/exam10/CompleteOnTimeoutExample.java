@@ -6,7 +6,9 @@ import java.util.concurrent.TimeUnit;
 public class CompleteOnTimeoutExample {
     public static void main(String[] args) {
 
-        getData().completeOnTimeout("Hello Java", 2, TimeUnit.SECONDS)
+
+        // completeOnTimeout 이용하여 타임 아웃 체크 하여 결과값 출력
+        getData().completeOnTimeout("Hello Java", 1, TimeUnit.SECONDS)
                 .thenAccept(r -> {
                     System.out.println("r = " + r);
                 }).join();

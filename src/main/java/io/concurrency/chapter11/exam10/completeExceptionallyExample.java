@@ -9,15 +9,15 @@ public class completeExceptionallyExample {
         getData(cf1);
         CompletableFuture<String> cf2 = cf1
                 .thenApply(result -> {
-                    System.out.println(result);
-                    return result.toUpperCase();
+                    System.out.println(result); // 출력: Hello World
+                    return result.toUpperCase(); // 반환값: HELLO WORLD
                 })
                 .handle((r, e) -> {
                     if (e != null) {
                         System.err.println("Exception: " + e.getMessage());
-                        return "noname";
+                        return "noname"; // 예외 발생 시 처리 값
                     }
-                    return r;
+                    return r; // 정상 결과 반환
                 });
 
         System.out.println("result: " + cf2.join());

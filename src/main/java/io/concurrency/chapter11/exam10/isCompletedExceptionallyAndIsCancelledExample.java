@@ -23,6 +23,7 @@ public class isCompletedExceptionallyAndIsCancelledExample {
                         return 0; // 취소 완료
                     }
                     else if (cf2.isCompletedExceptionally()) {
+                        //isCompletedExceptionally 사용하여 예외 완료 상태인지 체크한다.
                         return result2; // 예외 완료
                     }
                     else if(cf2.isDone()) {

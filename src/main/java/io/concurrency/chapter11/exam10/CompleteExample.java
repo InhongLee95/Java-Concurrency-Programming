@@ -9,7 +9,11 @@ public class CompleteExample {
 
         MyService service = new MyService();
         CompletableFuture<Integer> cf = service.performTask();
-        cf.thenApply(r -> r + 20);
+
+
+        CompletableFuture<Integer> updatedCf = cf.thenApply(r -> r + 20);
+        System.out.println("result: " + updatedCf.join());  // 결과: 60
+
 
         System.out.println("result: " + cf.join());
         System.out.println("메인 스레드 종료");
@@ -30,6 +34,7 @@ public class CompleteExample {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+                // complete 메섣 이용하여 작업 완료 전에 40으로 결과값 지정
                 cf.complete(40);
             });
             return cf;

@@ -24,6 +24,8 @@ public class isDoneExample {
             return result * 2;
         });
 
+
+        // isDone이용하여 진행 상태를 모니터링
         while (!cf1.isDone() || !cf2.isDone()) {
             System.out.println("작업이 아직 완료되지 않았습니다.");
             try {
