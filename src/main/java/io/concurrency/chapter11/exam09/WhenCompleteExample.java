@@ -6,6 +6,7 @@ import java.util.concurrent.CompletionException;
 public class WhenCompleteExample {
     public static void main(String[] args) throws InterruptedException {
 
+        // whenComplete 이용하여 RuntimeException 예외처리
     CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> {
                 try {
                     Thread.sleep(500);

@@ -20,6 +20,7 @@ public class HandleExample {
                     return r;
                 });
 
+        // handle 이용하여 RuntimeException 예외처리 수행
         CompletableFuture<Integer> cf2 = CompletableFuture.supplyAsync(() -> {
                     try {
                         Thread.sleep(500);

@@ -5,6 +5,8 @@ import java.util.concurrent.CompletableFuture;
 public class ExceptionallyExample {
     public static void main(String[] args) {
 
+
+        // exceptionally 이용하여 예외 발생 시 예외처리 수행
         CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> {
                     try {
                         Thread.sleep(500);
