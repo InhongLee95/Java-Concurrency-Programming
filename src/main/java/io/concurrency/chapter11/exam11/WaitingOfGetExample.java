@@ -8,12 +8,14 @@ public class WaitingOfGetExample {
 
         MyService myService = new MyService();
 
+        // 비동기 작업 실행
         CompletableFuture<String> service1Future = CompletableFuture.supplyAsync(() -> myService.callService("Service1"));
         CompletableFuture<String> service2Future = CompletableFuture.supplyAsync(() -> myService.callService("Service2"));
         CompletableFuture<String> service3Future = CompletableFuture.supplyAsync(() -> myService.callService("Service3"));
 
         CompletableFuture<Void> allOf = CompletableFuture.allOf(service1Future, service2Future, service3Future);
 
+        // get을 사용하면 체크 예외 처리까지 정의해야 한다.
         try {
             allOf.get(); // 모든 작업이 완료될 때까지 대기
         } catch (InterruptedException e) {

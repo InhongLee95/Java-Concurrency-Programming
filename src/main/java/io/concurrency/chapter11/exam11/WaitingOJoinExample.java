@@ -7,10 +7,13 @@ public class WaitingOJoinExample {
 
         MyService myService = new MyService();
 
+        // 비동기 작업 실행
         CompletableFuture<String> service1Future = CompletableFuture.supplyAsync(() -> myService.callService("Service1"));
         CompletableFuture<String> service2Future = CompletableFuture.supplyAsync(() -> myService.callService("Service2"));
         CompletableFuture<String> service3Future = CompletableFuture.supplyAsync(() -> myService.callService("Service3"));
 
+
+        // allOf 비동기 작업 결과 모아서 처리
         CompletableFuture<Void> allOf = CompletableFuture.allOf(service1Future, service2Future, service3Future);
         allOf.join(); // 모든 작업이 완료될 때까지 대기
 
